@@ -1,7 +1,7 @@
 <!-- 
 헤더
 pre - 2022.09.09
-modify - 2022.09.24
+modify - 2022.10.01
 milestone - 2022.12.30
 dev : 이규호, 최양원
 copyright : 이규호, 최양원
@@ -49,10 +49,58 @@ copyright : 이규호, 최양원
                                         소식2
                                     </a>
                             </ul>
+                        </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                 onclick="fnPatchNote()" aria-expanded="false">
                                 패치노트
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                onclick="fnDownload()" aria-expanded="false">
+                                다운로드
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                onclick="fnEsports()" aria-expanded="false">
+                                E스포츠
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-expanded="false">
+                                알아보기<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="sub-menu">
+                                    <a href="#" onclick="fnForInto_1()">
+                                        알아보기1
+                                    </a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" onclick="fnForInto_2()">
+                                        알아보기2
+                                    </a>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                onclick="fnUnivers()" aria-expanded="false">
+                                유니버스
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                onclick="fnRiotStore()" aria-expanded="false">
+                                라이엇 스토어
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                onclick="fnHelpDesk()" aria-expanded="false">
+                                고객지원
                             </a>
                         </li>
                     </ul>
@@ -75,24 +123,27 @@ copyright : 이규호, 최양원
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="registModalLabel"><span class="glyphicon glyphicon-user"></span> 회원정보
+                    <h4 class="modal-title" id="userInfoModalLabel"><span class="glyphicon glyphicon-user"></span> 회원정보
+                    </h4>
+                    <h4 class="modal-title" id="acountInfoModalLabel" hidden><span
+                            class="glyphicon glyphicon-user"></span> 계정정보
+                    </h4>
+                    <h4 class="modal-title" id="quitModalLabel" hidden><span class="glyphicon glyphicon-user"></span>
+                        회원탈퇴
                     </h4>
                 </div>
-                <div class="modal-body" id="body1"
+                <div class="modal-body" id="userInfo_body"
                     style="position:relative; display: flex; justify-content: space-around; visibility: none;">
                     <button class="btn btn-info" id="search_info" type="submit" onclick="fnSearchInfo()"><span
                             class="glyphicon glyphicon-search"> 계정정보</span></button>
                     <button class="btn btn-warning" id="quit_userInfo" type="submit" onclick="fnQuitUserInfo()"><span
                             class="glyphicon glyphicon-trash"> 회원탈퇴</span></button>
                 </div>
-                <div class="modal-body" id="body2"
+                <div class="modal-body" id="acountInfo_body"
                     style="position:relative; display: none; justify-content: space-around;">
-                    <button class="btn btn-info" id="search_info" type="submit" onclick=""><span
-                            class="glyphicon glyphicon-search"> 계정정보</span></button>
-                    <button class="btn btn-warning" id="quit_userInfo" type="submit" onclick=""><span
-                            class="glyphicon glyphicon-trash"> 회원탈퇴</span></button>
+                    
                 </div>
-                <div class="modal-body" id="body3" style="position:relative; display: none;">
+                <div class="modal-body" id="quit_body" style="position:relative; display: none;">
                     <button class="btn btn-info" id="search_info" type="submit" onclick=""><span
                             class="glyphicon glyphicon-search"> 1정보</span></button>
                     <button class="btn btn-warning" id="quit_userInfo" type="submit" onclick=""><span
@@ -104,53 +155,93 @@ copyright : 이규호, 최양원
 </header>
 <script type="text/javascript">
     function fnGoBackIntro() {
-    location.href = '/html/intro.html';
-}
+        location.href = '/html/intro.html';
+    }
 
-function fnMainIcon() {
-    location.href = '/html/index.html';
-}
+    function fnMainIcon() {
+        location.href = '/html/index.html';
+    }
 
-function fnGameInfo() {
-    location.href = '/html/menus/game_info.html';
-}
+    function fnGameInfo() {
+        location.href = '/html/menus/game_info.html';
+    }
 
-function fnChampion() {
-    location.href = '/html/menus/champions.html';
-}
+    function fnChampion() {
+        location.href = '/html/menus/champions.html';
+    }
 
-function fnNewNews_1() {
-    location.href = '/html/menus/new_news/news1.html';
-}
+    function fnNewNews_1() {
+        location.href = '/html/menus/new_news/news1.html';
+    }
 
-function fnNewNews_2() {
-    location.href = '/html/menus/new_news/news2.html';
-}
+    function fnNewNews_2() {
+        location.href = '/html/menus/new_news/news2.html';
+    }
 
-function fnPatchNote() {
-    location.href = '/html/menus/patchnote.html';
-}
+    function fnPatchNote() {
+        location.href = '/html/menus/patchnote.html';
+    }
 
-function fnSearchInfo() {
-    $('#body1').hide();
-    $('#body2').show();
-}
+    function fnDownload() {
+        location.href = '/html/menus/download.html';
+    }
 
-function fnQuitUserInfo() {
-    $('#body1').hide();
-    $('#body3').show();
-}
+    function fnEsports() {
+        location.href = '/html/menus/esports.html';
+    }
 
-$(document).ready(function () {
-    $('#userInfoModal').on('hidden.bs.modal', function () {
-        $('#body1').show();
-        $('#body2').hide();
-        $('#body3').hide();
+    function fnForInto_1() {
+        location.href = '/html/menus/forInfo/forInfo_1.html';
+    }
+
+    function fnForInto_2() {
+        location.href = '/html/menus/forInfo/forInfo_2.html';
+    }
+
+    function fnUnivers() {
+        location.href = '/html/menus/univers.html';
+    }
+
+    function fnRiotStore() {
+        location.href = '/html/menus/riotStore.html';
+    }
+
+    function fnHelpDesk() {
+        location.href = '/html/menus/helpDesk.html';
+    }
+
+    function fnSearchInfo() {
+        $('#userInfoModalLabel').hide();
+        $('#acountInfoModalLabel').show();
+        $('#userInfo_body').hide();
+        $('#acountInfo_body').show();
+    }
+
+    function fnQuitUserInfo() {
+        $('#userInfoModalLabel').hide();
+        $('#quitModalLabel').show();
+        $('#userInfo_body').hide();
+        $('#quit_body').show();
+    }
+
+    $(document).ready(function () {
+        $('#userInfoModal').on('hidden.bs.modal', function () {
+            $('#userInfoModalLabel').show();
+            $('#acountInfoModalLabel').hide();
+            $('#quitModalLabel').hide();
+            $('#userInfo_body').show();
+            $('#acountInfo_body').hide();
+            $('#quit_body').hide();
+        });
     });
-});
 
-function fnTest() {
-    console.log(input_id);
-    alert(input_id);
-}
+    var userInfoProp = "";
+    $(document).ready(function(){
+        var userDataArr = JSON.parse(localStorage.getItem(key));
+    });
+
+    function fnTest() {
+        console.log(input_id);
+        alert(input_id);
+    }
 </script>
