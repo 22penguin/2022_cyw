@@ -105,8 +105,6 @@ copyright : 이규호, 최양원
                         </li>
                     </ul>
                     <div class="nav navbar-nav navbar-right">
-                        <button class="btn btn-warning" id="goback_intro_btn" type="submit" onclick="fnTest()"><span
-                                class="glyphicon glyphicon-remove"></span> test</button>
                         <button class="btn btn-info" id="user_info" type="submit" data-toggle="modal"
                             data-target="#userInfoModal"><span class="glyphicon glyphicon-user"></span> 회원정보</button>
                         <button class="btn btn-warning" id="goback_intro_btn" type="submit"
@@ -141,20 +139,90 @@ copyright : 이규호, 최양원
                 </div>
                 <div class="modal-body" id="acountInfo_body"
                     style="position:relative; display: none; justify-content: space-around;">
-                    
+                    <p style="display: flex;justify-content: center;font-size: 18px;color: red;">본인확인을 위해 비밀번호를 입력해주세요.
+                    </p>
+                    <div class="row" style="padding:3px;"></div>
+                    <div class="row" style="display: flex; justify-content: center;">
+                        <input type="password" id="reCheckPw" name="reCheckPw" required placeholder="패스워드를 입력하세요."
+                            value="" style="width:240px;" />
+                        <button class="btn btn-primary" id="rechk_btn" type="submit"><span
+                                class="glyphicon glyphicon-ok"></span> 확인</button>
+                    </div>
                 </div>
-                <div class="modal-body" id="quit_body" style="position:relative; display: none;">
-                    <button class="btn btn-info" id="search_info" type="submit" onclick=""><span
-                            class="glyphicon glyphicon-search"> 1정보</span></button>
-                    <button class="btn btn-warning" id="quit_userInfo" type="submit" onclick=""><span
-                            class="glyphicon glyphicon-trash"> 2탈퇴</span></button>
+                <div class=" modal-body" id="acountInfo_body_1"
+                    style="position:relative; display: none; justify-content: space-around;">
+                    <form id="acount_info_form" name="acount_info_form">
+                        <div id="acount_div" class="form-row">
+                            <div id="acount_id" class="form-group">
+                                <label for="reChkUserId">아이디</label>
+                                <input type="text" class="form-control" id="reChkUserId" readonly value="">
+                            </div>
+                            <div id="acount_email" class="form-group">
+                                <label for="reChkUserEmail">이메일</label>
+                                <input type="email" class="form-control" id="reChkUserEmail" readonly value="">
+                            </div>
+                            <div id="acount_email_modi" class="form-group" style="display:none;">
+                                <label for="insert_Email">이메일</label>
+                                <div class="inline-form" style="display: flex;">
+                                    <input class="form-control" id="insert_Email" type="text" required
+                                        placeholder="Email" value="" style="width:180px; height:34px;"><label
+                                        for="select_domain" class="at" style="font-size: 16px;">@</label><input
+                                        type="text" class="form-control" id="input-domain" placeholder="example.com"
+                                        style="width: 160px; height: 34px;">
+                                    <select class="form-control" id="select_domain"
+                                        style="width: 160px; height: 34px; padding-left: 0px;;">
+                                        <option value="1" selected>직접입력</option>
+                                        <option value="naver.com">naver.com</option>
+                                        <option value="hanmail.net">hanmail.net</option>
+                                        <option value="hotmail.com">hotmail.com</option>
+                                        <option value="nate.com">nate.com</option>
+                                        <option value="yahoo.co.kr">yahoo.co.kr</option>
+                                        <option value="empas.com">empas.com</option>
+                                        <option value="dreamwiz.com">dreamwiz.com</option>
+                                        <option value="freechal.com">freechal.com</option>
+                                        <option value="lycos.co.kr">lycos.co.kr</option>
+                                        <option value="korea.com">korea.com</option>
+                                        <option value="gmail.com">gmail.com</option>
+                                        <option value="hanmir.com">hanmir.com</option>
+                                        <option value="paran.com">paran.com</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="acount_pw" class="form-group">
+                                <label for="reChkUserPw">비밀번호</label>
+                                <input type="password" class="form-control" id="reChkUserPw" onchange="fnModiPw()"
+                                    readonly value=""><i class="glyphicon glyphicon-eye-open" id="pw_show_hide"
+                                    style="position: absolute; left: 95%; top: 72%; transform: translate(-50%, -50%);"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="acount_modi_btn" class="row" style="display:flex; justify-content:space-around;">
+                        <button class="btn btn-info" id="acount_modify_btn" type="submit"><span
+                                class="glyphicon glyphicon-refresh"></span>
+                            정보수정</button>
+                        <button class="btn btn-primary" id="acount_save_btn" type="submit" style="display:none;"><span
+                                class="glyphicon glyphicon-ok"></span> 저장</button>
+                    </div>
+                </div>
+                <div class="modal-body" id="quit_body"
+                    style="position:relative; display: none; justify-content: space-around;">
+                    <p style="display: flex;justify-content: center;font-size: 18px;color: red;">본인확인을 위해 비밀번호를 입력해주세요.
+                    </p>
+                    <div class="row" style="padding:3px;"></div>
+                    <div class="row" style="display: flex; justify-content: center;">
+                        <input type="password" id="quitChkPw" name="quitChkPw" required placeholder="패스워드를 입력하세요."
+                            value="" style="width:240px;" />
+                        <button class="btn btn-primary" id="quit_rechk_btn" type="submit"><span
+                                class="glyphicon glyphicon-ok"></span> 확인</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </header>
-<script type="text/javascript">
+<script>
     function fnGoBackIntro() {
+        sessionStorage.clear();
         location.href = '/html/intro.html';
     }
 
@@ -210,6 +278,203 @@ copyright : 이규호, 최양원
         location.href = '/html/menus/helpDesk.html';
     }
 
+    var reChk_Id = "";
+    var reChk_Pw = "";
+    var reChk_Email = "";
+    // 본인확인 비밀번호 확인btn query(enter key keyup)
+    $("#reCheckPw").keyup(function (e) {
+        if (e.keyCode == 13) {
+            reChk_Pw = $('#reCheckPw').val();
+
+            if (sessionStorage.getItem(reChk_Pw) == null) {
+                alert('비밀번호가 틀렸습니다.');
+                $('#reCheckPw').val("");
+                return false;
+            }
+            var getLoginData = JSON.parse(sessionStorage.getItem(reChk_Pw));
+            let valIndex = Object.values(getLoginData);
+            reChk_Id = valIndex[1];
+            reChk_Email = valIndex[0];
+
+            $('#reChkUserId').val(reChk_Id);
+            $('#reChkUserPw').val(reChk_Pw);
+            $('#reChkUserEmail').val(reChk_Email);
+
+            $('#acountInfo_body').hide();
+            $('#acountInfo_body_1').show();
+        }
+    });
+
+    // 본인확인 비밀번호 확인btn query
+    $("#rechk_btn").click(function () {
+        reChk_Pw = $('#reCheckPw').val();
+
+        if (sessionStorage.getItem(reChk_Pw) == null) {
+            alert('비밀번호가 틀렸습니다.');
+            $('#reCheckPw').val("");
+            return false;
+        }
+        var getLoginData = JSON.parse(sessionStorage.getItem(reChk_Pw));
+        let valIndex = Object.values(getLoginData);
+        reChk_Id = valIndex[1];
+        reChk_Email = valIndex[0];
+
+        $('#reChkUserId').val(reChk_Id);
+        $('#reChkUserPw').val(reChk_Pw);
+        $('#reChkUserEmail').val(reChk_Email);
+
+        $('#acountInfo_body').hide();
+        $('#acountInfo_body_1').show();
+    });
+
+    // 정보수정 btn click query
+    $('#acount_modify_btn').click(function () {
+        var cutEmail = reChk_Email.split('@');
+        var before_email = cutEmail[0];
+        var adter_email = cutEmail[1];
+
+        $('#reChkUserPw').removeAttr("readonly");
+        $('#reChkUserEmail').removeAttr("readonly");
+        $('#acount_modify_btn').hide();
+        $('#acount_save_btn').show();
+        $('#acount_email').hide();
+        $('#acount_email_modi').show();
+
+        $('#insert_Email').val(before_email);
+        $("#input-domain").val(adter_email);
+        $("#input-domain").attr("disabled", true);
+        $('#select_domain').val(adter_email);
+    });
+
+    // selectbox email domain 선택시 query
+    $("#select_domain").change(function () {
+        $("#select_domain option:selected").each(function () {
+            if ($(this).val() == '1') {
+                $("#input-domain").val('');
+                $("#input-domain").attr("disabled", false);
+            } else {
+                $("#input-domain").val($(this).text());
+                $("#input-domain").attr("disabled", true);
+            }
+        });
+    });
+
+    let modi_email = "";
+    let modi_pw = "";
+    // 계정정보 저장 btn query
+    $('#acount_save_btn').click(function () {
+        modi_email = $('#insert_Email').val() + "@" + $("#input-domain").val();
+        modi_pw = $('#reChkUserPw').val();
+
+        localStorage.removeItem(reChk_Id);
+        sessionStorage.clear();
+
+        var session_arr = { email: modi_email, id: reChk_Id }
+        sessionStorage.setItem(modi_pw, JSON.stringify(session_arr));
+
+        var modi_arr = { email: modi_email, password: modi_pw }
+        console.log("계정정보 변경중...");
+        localStorage.setItem(reChk_Id, JSON.stringify(modi_arr));
+        alert("계정정보 수정이 완료되었습니다.");
+    });
+
+    // 계정정보 수정 PW 유효성검사 query
+    function fnModiPw() {
+        var pw1 = $('#reChkUserPw').val();
+        var pwsc = ["!", "@", "#", "%", "^", "?"];
+        var pw_check_sc = 0;
+        var num = pw1.search(/[0-9]/g);
+        var eng = pw1.search(/[a-z]/ig);
+        var spe = pw1.search(/[!@#%^?]/gi);
+
+        if (pw1.length < 6 || pw1.length > 15) {
+            alert("비밀번호는 6글자 이상, 15글자 이하로 입력해주세요.");
+            document.getElementById('reChkUserPw').value = '';
+            return false;
+        }
+        if (pw1.search(/\s/) != -1) {
+            alert("비밀번호는 공백 없이 입력해주세요.");
+            return false;
+        }
+        for (var i = 0; i < pwsc.length; i++) {
+            if (pw1.indexOf(pwsc[i]) != 0 - 1) {
+                pw_check_sc = 1;
+            }
+        }
+        if (pw_check_sc == 0) {
+            alert("!,@,#,%,^,?의 특수문자가 들어가 있지 않습니다.");
+            document.getElementById('reChkUserPw').value = '';
+            return false;
+        }
+        if (num < 0 || eng < 0 || spe < 0) {
+            alert("영문, 숫자, 특수문자를 혼합하여 입력해주세요.");
+            return false;
+        }
+    }
+
+    // 계정정보 수정 비밀번호 표시 미표시 btn
+    $('#pw_show_hide').click(function () {
+        $('#reChkUserPw').toggleClass('active');
+        if ($('#reChkUserPw').hasClass('active')) {
+            $('#pw_show_hide').attr('class', 'glyphicon glyphicon-eye-close').prev('#reChkUserPw').attr('type', 'text');
+        } else {
+            $('#pw_show_hide').attr('class', 'glyphicon glyphicon-eye-open').prev('#reChkUserPw').attr('type', 'password');
+        }
+    });
+
+    let quit_rechk_Id = "";
+    let quit_reChk_Pw = "";
+
+    // 회원탈퇴 본인확인 비밀번호 확인 btn query(enter key keyup)
+    $("#quit_rechk_btn").keyup(function (e) {
+        if (e.keyCode == 13) {
+            quit_reChk_Pw = $('#quitChkPw').val();
+            var getQuitUserData = JSON.parse(sessionStorage.getItem(quit_reChk_Pw));
+            let quitValIndex = Object.values(getQuitUserData);
+            quit_rechk_Id = quitValIndex[1];
+
+            if (sessionStorage.getItem(quit_reChk_Pw) == null) {
+                alert('비밀번호가 틀렸습니다.');
+                $('#reCheckPw').val("");
+                return false;
+            }
+
+            if (confirm("정말로 회원탈퇴를 하시겠습니까?") == true) {
+                localStorage.removeItem(quit_rechk_Id);
+                sessionStorage.removeItem(quit_reChk_Pw);
+                alert("회원탈퇴가 완료되었습니다.");
+                location.href = '/html/intro.html';
+            } else {
+                alert("취소되었습니다.");
+                $('#reCheckPw').val("");
+            }
+        }
+    });
+
+    // 회원탈퇴 본인확인 비밀번호 확인 btn query
+    $('#quit_rechk_btn').click(function () {
+        quit_reChk_Pw = $('#quitChkPw').val();
+        var getQuitUserData = JSON.parse(sessionStorage.getItem(quit_reChk_Pw));
+        let quitValIndex = Object.values(getQuitUserData);
+        quit_rechk_Id = quitValIndex[1];
+
+        if (sessionStorage.getItem(quit_reChk_Pw) == null) {
+            alert('비밀번호가 틀렸습니다.');
+            $('#reCheckPw').val("");
+            return false;
+        }
+
+        if (confirm("정말로 회원탈퇴를 하시겠습니까?") == true) {
+            localStorage.removeItem(quit_rechk_Id);
+            sessionStorage.removeItem(quit_reChk_Pw);
+            alert("회원탈퇴가 완료되었습니다.");
+            location.href = '/html/intro.html';
+        } else {
+            alert("취소되었습니다.");
+            $('#reCheckPw').val("");
+        }
+    });
+
     function fnSearchInfo() {
         $('#userInfoModalLabel').hide();
         $('#acountInfoModalLabel').show();
@@ -231,17 +496,19 @@ copyright : 이규호, 최양원
             $('#quitModalLabel').hide();
             $('#userInfo_body').show();
             $('#acountInfo_body').hide();
+            $('#acountInfo_body_1').hide();
             $('#quit_body').hide();
+            $('#reCheckPw').val("");
+            $('#reChkUserPw').attr("readonly", true);
+            $('#reChkUserEmail').attr("readonly", true);
+            $('#reChkUserPw').removeClass('active');
+            $('#pw_show_hide').attr('class', 'glyphicon glyphicon-eye-open').prev('#reChkUserPw').attr('type', 'password');
+
+            $('#acount_modify_btn').show();
+            $('#acount_save_btn').hide();
+
+            $('#acount_email').show();
+            $('#acount_email_modi').hide();
         });
     });
-
-    var userInfoProp = "";
-    $(document).ready(function(){
-        var userDataArr = JSON.parse(localStorage.getItem(key));
-    });
-
-    function fnTest() {
-        console.log(input_id);
-        alert(input_id);
-    }
 </script>

@@ -102,7 +102,6 @@ function fnTryRegist() {
         console.log("start to submit user info...");
         localStorage.setItem(userId, JSON.stringify(infoArr));
         alert("회원가입이 완료되었습니다.");
-        getUserLocalData();
     }
 }
 
@@ -110,6 +109,7 @@ let userLoginInfo = "";
 let input_id = "";
 let input_pw = "";
 let login_pw = "";
+let login_email = "";
 
 // 로그인
 $(document).ready(function () {
@@ -140,8 +140,12 @@ $(document).ready(function () {
             var getLoginData = JSON.parse(localStorage.getItem(input_id));
             let pwIndex = Object.values(getLoginData);
             login_pw = pwIndex[1];
+            login_email = pwIndex[0];
 
             if (login_pw == input_pw) {
+                var pwemArr = { email: login_email, id: input_id }
+                sessionStorage.setItem(login_pw, JSON.stringify(pwemArr));
+
                 location.href = '/html/index.html';
                 return;
             }
@@ -164,8 +168,12 @@ $(document).ready(function () {
         let getLoginData = JSON.parse(localStorage.getItem(input_id));
         let pwIndex = Object.values(getLoginData);
         login_pw = pwIndex[1];
+        login_email = pwIndex[0];
 
         if (login_pw == input_pw) {
+            var pwemArr = { email: login_email, id: input_id }
+            sessionStorage.setItem(login_pw, JSON.stringify(pwemArr));
+
             location.href = '/html/index.html';
             return;
         }
@@ -218,21 +226,4 @@ function getCookie(cookieName) {
         cookieValue = cookieData.substring(start, end);
     }
     return unescape(cookieValue);
-}
-
-let infoLoginId = input_id;
-let infoLoginPw = "";
-let infoLoginEmail = "";
-
-function getUserLocalData() {
-    let getLocalData = JSON.parse(localStorage.getItem(infoLoginId));
-    let otherIndex = Object.values(getLocalData);
-    infoLoginPw = otherIndex[1];
-    infoLoginEmail = otherIndex[0];
-}
-
-const getUserData = {
-    Id: infoLoginId,
-    Pw: infoLoginPw,
-    Email: infoLoginEmail
 }

@@ -1,0 +1,23 @@
+{
+  "name": "2022_cyw_lgh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/22penguin/2022_cyw_lgh.git"
+  },
+  "keywords": [
+    "node.js"
+  ],
+  "author": "penguinCoder",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/22penguin/2022_cyw_lgh/issues"
+  },
+  "homepage": "https://github.com/22penguin/2022_cyw_lgh#readme",
+  "type": "module"
+}
