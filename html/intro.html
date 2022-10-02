@@ -46,18 +46,25 @@ copyright : 이규호, 최양원
 
     <script src="/js/default.js"></script>
     <script src="/js/intro.js"></script>
+    <script src="/locale/language_default.js"></script>
 
     <title>qenguin coder</title>
 </head>
 
 <body>
     <div class="container">
+        <select id="lang_select">
+            <option id="ko" value="ko" selected>ko</option>
+            <option id="jp" value="jp">jp</option>
+            <option id="en" value="en">en</option>
+        </select>
         <div class="login-contents">
             <div class="sec-contents">
-                <p class="text-login">로그인</p>
+                <p class="text-login" id="text_login">로그인</p>
             </div>
             <div class="login-inner-contents">
-                <p>계정 정보를 입력한 후에<br>접속하실 수 있습니다.</p>
+                <p id="login_info_1">계정 정보를 입력한 후에</p>
+                <p id="login_info_2">접속하실 수 있습니다.</p>
             </div>
             <div class="login-module">
                 <form id="login_form" name="login_form" method="post">
@@ -74,12 +81,12 @@ copyright : 이규호, 최양원
             </div>
             <div class="login-btn">
                 <button class="btn btn-info" id="intro_regist_btn" type="submit" data-toggle="modal"
-                    data-target="#registModal"><span class="glyphicon glyphicon-user"></span>회원가입</button>
+                    data-target="#registModal"><span class="glyphicon glyphicon-user"></span> 회원가입</button>
                 <button class="btn btn-primary" id="intro_login_btn" type="submit"><span
                         class="glyphicon glyphicon-ok"></span> 로그인</button>
             </div>
             <div id="saveIdDiv" class="saveIdDiv">
-                <input type="checkbox" id="saveId" class="saveId"><label for="saveId">아이디 저장</label>
+                <input type="checkbox" id="saveId" class="saveId"><label for="saveId" id="saveId_lebel">아이디 저장</label>
             </div>
         </div>
     </div>
@@ -111,7 +118,7 @@ copyright : 이규호, 최양원
                                         class="at">@</label><input type="text" class="form-control" id="input-domain"
                                         placeholder="example.com">
                                     <select class="form-control" id="select_domain">
-                                        <option value="1" selected>직접입력</option>
+                                        <option id="choose_domain_reg" value="1" selected>직접입력</option>
                                         <option value="naver.com">naver.com</option>
                                         <option value="hanmail.net">hanmail.net</option>
                                         <option value="hotmail.com">hotmail.com</option>
@@ -141,7 +148,8 @@ copyright : 이규호, 최양원
                                 <div class="row" style="padding: 1px;"></div>
                                 <input class="form-control" id="insert_Pw_confirm" type="password" required
                                     placeholder="비밀번호를 다시 입력하세요." onchange="fnCheckPw()">
-                                <label class="pwConfirmError" style="visibility: hidden;">비밀번호가 틀립니다!</label>
+                                <label class="pwConfirmError" style="visibility: hidden;" id="wrong_password">비밀번호가
+                                    틀립니다!</label>
                             </div>
                             <div id="regist_btn" class="form-group">
                                 <button class="btn btn-primary" id="try_regist_btn" onclick="fnTryRegist()"><span

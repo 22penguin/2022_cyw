@@ -1,10 +1,10 @@
 let onLanguage = {
     "ko": {
-        content: "다국어설정 예시"
+        content: "다국어설정</br> 예시"
     },
 
     "en": {
-        content: "multi Language example"
+        content: "multi Language</br> example"
     }
 };
 

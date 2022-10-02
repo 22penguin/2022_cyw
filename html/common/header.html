@@ -426,18 +426,19 @@ copyright : 이규호, 최양원
     let quit_reChk_Pw = "";
 
     // 회원탈퇴 본인확인 비밀번호 확인 btn query(enter key keyup)
-    $("#quit_rechk_btn").keyup(function (e) {
+    $("#quitChkPw").keyup(function (e) {
         if (e.keyCode == 13) {
             quit_reChk_Pw = $('#quitChkPw').val();
-            var getQuitUserData = JSON.parse(sessionStorage.getItem(quit_reChk_Pw));
-            let quitValIndex = Object.values(getQuitUserData);
-            quit_rechk_Id = quitValIndex[1];
 
             if (sessionStorage.getItem(quit_reChk_Pw) == null) {
                 alert('비밀번호가 틀렸습니다.');
-                $('#reCheckPw').val("");
+                $('#quitChkPw').val("");
                 return false;
             }
+
+            var getQuitUserData = JSON.parse(sessionStorage.getItem(quit_reChk_Pw));
+            let quitValIndex = Object.values(getQuitUserData);
+            quit_rechk_Id = quitValIndex[1];
 
             if (confirm("정말로 회원탈퇴를 하시겠습니까?") == true) {
                 localStorage.removeItem(quit_rechk_Id);
@@ -445,8 +446,8 @@ copyright : 이규호, 최양원
                 alert("회원탈퇴가 완료되었습니다.");
                 location.href = '/html/intro.html';
             } else {
+                $('#quitChkPw').val("");
                 alert("취소되었습니다.");
-                $('#reCheckPw').val("");
             }
         }
     });
@@ -454,15 +455,16 @@ copyright : 이규호, 최양원
     // 회원탈퇴 본인확인 비밀번호 확인 btn query
     $('#quit_rechk_btn').click(function () {
         quit_reChk_Pw = $('#quitChkPw').val();
-        var getQuitUserData = JSON.parse(sessionStorage.getItem(quit_reChk_Pw));
-        let quitValIndex = Object.values(getQuitUserData);
-        quit_rechk_Id = quitValIndex[1];
 
         if (sessionStorage.getItem(quit_reChk_Pw) == null) {
             alert('비밀번호가 틀렸습니다.');
-            $('#reCheckPw').val("");
+            $('#quitChkPw').val("");
             return false;
         }
+
+        var getQuitUserData = JSON.parse(sessionStorage.getItem(quit_reChk_Pw));
+        let quitValIndex = Object.values(getQuitUserData);
+        quit_rechk_Id = quitValIndex[1];
 
         if (confirm("정말로 회원탈퇴를 하시겠습니까?") == true) {
             localStorage.removeItem(quit_rechk_Id);
@@ -470,8 +472,8 @@ copyright : 이규호, 최양원
             alert("회원탈퇴가 완료되었습니다.");
             location.href = '/html/intro.html';
         } else {
+            $('#quitChkPw').val("");
             alert("취소되었습니다.");
-            $('#reCheckPw').val("");
         }
     });
 

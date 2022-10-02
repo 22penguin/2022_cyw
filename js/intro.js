@@ -227,3 +227,41 @@ function getCookie(cookieName) {
     }
     return unescape(cookieValue);
 }
+
+// $(document).ready(function () {
+//     $('#lang_select').change(function () {
+//         var toVal = document.getElementById('lang_select');
+//         var selVal = toVal.value;
+//         var lang_ko = document.getElementById('web_lang_ko');
+//         var lang_jp = document.getElementById('web_lang_jp');
+//         var lang_en = document.getElementById('web_lang_en');
+//         if (selVal == ko) {
+//             if (!document.getElementById('ko')) {
+//                 lang_jp.remove();
+//                 lang_en.remove();
+//                 var setScript_1 = document.createElement('script');
+//                 setScript_1.setAttribute('id', 'web_lang_ko');
+//                 setScript_1.setAttribute('src', '/locale/language_ko.js');
+//                 document.head.appendChild(setScript_1);
+//             }
+//         } else if (selVal == jp) {
+//             if (!document.getElementById('jp')) {
+//                 lang_ko.remove();
+//                 lang_en.remove();
+//                 var setScript_2 = document.createElement('script');
+//                 setScript_2.setAttribute('id', 'web_lang_jp');
+//                 setScript_2.setAttribute('src', '/locale/language_jp.js');
+//                 document.head.appendChild(setScript_2);
+//             }
+//         } else {
+//             if (!document.getElementById('ko')) {
+//                 lang_jp.remove();
+//                 lang_en.remove();
+//                 var setScript_3 = document.createElement('script');
+//                 setScript_3.setAttribute('id', 'web_lang_ko');
+//                 setScript_3.setAttribute('src', '/locale/language_ko.js');
+//                 document.head.appendChild(setScript_3);
+//             }
+//         }
+//     });
+// });
