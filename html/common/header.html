@@ -105,6 +105,9 @@ copyright : 이규호, 최양원
                         </li>
                     </ul>
                     <div class="nav navbar-nav navbar-right">
+                        <p id="setTimeInit" style="position:absolute;right: 355px;"></p>
+                        <button class="btn btn-primary" id="resetTimer" type="submit"><span
+                                class="glyphicon glyphicon-refresh"></span> 시간 초기화</button>
                         <button class="btn btn-info" id="user_info" type="submit" data-toggle="modal"
                             data-target="#userInfoModal"><span class="glyphicon glyphicon-user"></span> 회원정보</button>
                         <button class="btn btn-warning" id="goback_intro_btn" type="submit"
@@ -512,5 +515,43 @@ copyright : 이규호, 최양원
             $('#acount_email').show();
             $('#acount_email_modi').hide();
         });
+    });
+
+    var timer = 600;
+    var min = "";
+    var sec = "";
+    var setTimer = "";
+    $(document).ready(function () {
+        setTimer = setInterval(function () {
+            min = parseInt(timer / 60);
+            sec = timer % 60;
+
+            $("#setTimeInit").html(min + "분" + sec + "초");
+            timer--;
+
+            if (timer < 0) {
+                clearInterval(setTimer);
+                alert("로그인을 다시 시도해주세요.");
+                location.href = '/html/intro.html';
+            }
+        }, 1000);
+    });
+
+    $("#resetTimer").click(function () {
+        clearInterval(setTimer);
+        timer = 600;
+        setTimer = setInterval(function () {
+            min = parseInt(timer / 60);
+            sec = timer % 60;
+
+            $("#setTimeInit").html(min + "분" + sec + "초");
+            timer--;
+
+            if (timer < 0) {
+                clearInterval(setTimer);
+                alert("로그인을 다시 시도해주세요.");
+                location.href = '/html/intro.html';
+            }
+        }, 1000);
     });
 </script>
