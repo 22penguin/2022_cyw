@@ -1,7 +1,7 @@
 <!-- 
 로그인 화면
 pre - 2022.09.09
-modify - 2022.10.03
+modify - 2022.10.06
 milestone - 2022.12.30
 dev : 이규호, 최양원
 copyright : 이규호, 최양원
@@ -47,18 +47,94 @@ copyright : 이규호, 최양원
     <script src="/js/default.js"></script>
     <script src="/js/intro.js"></script>
     <script src="/locale/language_default.js"></script>
+    <style>
+        #lang_select>#lang_dropdown {
+            display: none;
+            height: 50px;
+            list-style: none;
+            overflow: hidden;
+        }
 
+        #lang_select>#lang_dropdown.up {
+            height: 0;
+            animation-name: slideUp;
+            animation-duration: 1s;
+        }
+
+        #lang_select>#lang_dropdown.down {
+            height: 50px;
+            animation-name: slideDown;
+            animation-duration: 1s;
+        }
+
+        @keyframes slideUp {
+            0% {
+                height: 50px;
+            }
+
+            100% {
+                height: 0px;
+            }
+        }
+
+        @keyframes slideDown {
+            0% {
+                height: 0px;
+            }
+
+            100% {
+                height: 50px;
+            }
+        }
+
+        #default_lang:hover {
+            cursor: pointer;
+            background-color: white;
+        }
+
+        #ko:hover {
+            cursor: pointer;
+            background-color: white;
+        }
+
+        #jp:hover {
+            cursor: pointer;
+            background-color: white;
+        }
+
+        #en:hover {
+            cursor: pointer;
+            background-color: white;
+        }
+    </style>
     <title>qenguin coder</title>
 </head>
 
 <body>
     <div class="container">
-        <span class="glyphicon glyphicon-globe"></span>
-        <select id="lang_select">
-            <option id="ko" value="ko">ko</option>
-            <option id="jp" value="jp">jp</option>
-            <option id="en" value="en">en</option>
-        </select>
+        <div id="lang_select">
+            <img id="default_lang" src="/images/language/lang_dafault.png" style="width: 50px; height: 50px;"></img>
+            <ul id="lang_dropdown">
+                <li>
+                    <img id="ko" src="/images/language/lang_ko.png"
+                        style="width: 50px; height: 50px; display: none;"></img>
+                </li>
+                <li>
+                    <img id="jp" src="/images/language/lang_jp.png"
+                        style="width: 50px; height: 50px; display: none;"></img>
+                </li>
+                <li>
+                    <img id="en" src="/images/language/lang_en.png"
+                        style="width: 50px; height: 50px; display: none;"></img>
+                </li>
+                <ul />
+        </div>
+        <!-- <select id="lang_select">
+            <option id="default_lang" value="default" title="/images/language/lang_dafault.png"></option>
+            <option id="ko" value="ko" title="/images/language/lang_ko.png"></option>
+            <option id="jp" value="jp" title="/images/language/lang_jp.png"></option>
+            <option id="en" value="en" title="/images/language/lang_en.png"></option>
+        </select> -->
         <div class="login-contents">
             <div class="sec-contents">
                 <p class="text-login" id="text_login">로그인</p>
