@@ -132,3 +132,105 @@ body {
     position: relative;
     left: 2%;
 }
+
+#lang_select {
+    width: 35px;
+    height: 35px;
+    line-height: 40px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 40%;
+    left: 68%;
+    z-index: 999;
+}
+
+#lang_select>#lang_dropdown {
+    display: none;
+    height: 140px;
+    list-style: none;
+    overflow: hidden;
+}
+
+#lang_select>#lang_dropdown li {
+    border-top: 1px white solid;
+}
+
+#lang_select>#lang_dropdown li>img {
+    text-decoration: none;
+}
+
+#lang_select>#lang_dropdown.up {
+    height: 0px;
+    animation-name: slide_up;
+    animation-duration: 1s;
+}
+
+#lang_select>#lang_dropdown.down {
+    height: 35px;
+    animation-name: slide_down;
+    animation-duration: 1s;
+}
+
+@keyframes slide_up {
+    0% {
+        height: 35px;
+    }
+
+    100% {
+        height: 0px;
+    }
+}
+
+@keyframes slide_down {
+    0% {
+        height: 0px;
+    }
+
+    100% {
+        height: 35px;
+    }
+}
+
+#default_lang {
+    width: 35px;
+    height: 35px;
+    margin-bottom: 2px;
+}
+
+#default_lang:hover {
+    cursor: pointer;
+    /* background-color: white; */
+}
+
+#ko {
+    width: 35px;
+    height: 35px;
+    border: 2px black solid;
+}
+
+#ko:hover {
+    cursor: pointer;
+    /* background-color: white; */
+}
+
+#jp {
+    width: 35px;
+    height: 35px;
+    border: 2px black solid;
+}
+
+#jp:hover {
+    cursor: pointer;
+    /* background-color: white; */
+}
+
+#en {
+    width: 35px;
+    height: 35px;
+    border: 2px black solid;
+}
+
+#en:hover {
+    cursor: pointer;
+    /* background-color: white; */
+}

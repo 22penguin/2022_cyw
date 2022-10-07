@@ -228,13 +228,14 @@ function getCookie(cookieName) {
     return unescape(cookieValue);
 }
 
-// 수정필요
 let langToggle = true;
-$("#default_lang").click(() => {
-    if (langToggle) {
-        $("#lang_dropdown").slideDown(1000);
-    } else {
-        $("#lang_dropdown").slideUp(1000);
-    }
-    langToggle = !langToggle;
+$(function () {
+    $("#lang_select").click(() => {
+        if (langToggle) {
+            $("#lang_dropdown").slideDown(500);
+        } else {
+            $("#lang_dropdown").slideUp(500);
+        }
+        langToggle = !langToggle;
+    });
 });

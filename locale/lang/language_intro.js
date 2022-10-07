@@ -1,29 +1,29 @@
 /**
  * 언어변경 default
  * pre - 2022.09.09
- * modify - 2022.10.03
+ * modify - 2022.10.08
  * milestone - 2022.12.30
  * dev : 이규호, 최양원
  * copyright : 이규호, 최양원
  */
 $(document).ready(function () {
-    $('#lang_select').change(function () {
-        var toVal = document.getElementById('lang_select');
-        var selVal = toVal.value;
+    $("#ko").click(function () {
+        fnLangKo();
+    });
 
-        if (selVal == "ko") {
-            return fnLangKo();
-        }
-        if (selVal == "jp") {
-            return fnLangJp();
-        }
-        if (selVal == "en") {
-            return fnLangKo();
-        }
+    $("#jp").click(function () {
+        fnLangJp();
+    });
+
+    $("#en").click(function () {
+        fnLangKo();
     });
 });
 
 function fnLangKo() {
+    /**
+     * intro.html
+     */
     document.getElementById('text_login').innerText = '로그인';
     document.getElementById('login_info_1').innerText = '계정 정보를 입력한 후에';
     document.getElementById('login_info_2').innerText = '접속하실 수 있습니다.';
@@ -43,6 +43,9 @@ function fnLangKo() {
 }
 
 function fnLangJp() {
+    /**
+     * intro.html
+     */
     document.getElementById('text_login').innerText = 'ログイン';
     document.getElementById('login_info_1').innerText = 'アカウント情報を入力されたあと';
     document.getElementById('login_info_2').innerText = 'アクセス可能です。';

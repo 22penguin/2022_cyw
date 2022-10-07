@@ -1,11 +1,114 @@
 <!-- 
 헤더
 pre - 2022.09.09
-modify - 2022.10.05
+modify - 2022.10.08
 milestone - 2022.12.30
 dev : 이규호, 최양원
 copyright : 이규호, 최양원
 -->
+<style>
+    #lang_select {
+        width: 35px;
+        height: 35px;
+        line-height: 40px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 45%;
+        left: 76%;
+        z-index: 999;
+    }
+
+    #lang_select>#lang_dropdown {
+        display: none;
+        height: 140px;
+        list-style: none;
+        overflow: hidden;
+    }
+
+    #lang_select>#lang_dropdown li {
+        border-top: 1px white solid;
+    }
+
+    #lang_select>#lang_dropdown li>img {
+        text-decoration: none;
+    }
+
+    #lang_select>#lang_dropdown.up {
+        height: 0px;
+        animation-name: slide_up;
+        animation-duration: 1s;
+    }
+
+    #lang_select>#lang_dropdown.down {
+        height: 35px;
+        animation-name: slide_down;
+        animation-duration: 1s;
+    }
+
+    @keyframes slide_up {
+        0% {
+            height: 35px;
+        }
+
+        100% {
+            height: 0px;
+        }
+    }
+
+    @keyframes slide_down {
+        0% {
+            height: 0px;
+        }
+
+        100% {
+            height: 35px;
+        }
+    }
+
+    #default_lang {
+        width: 35px;
+        height: 35px;
+        margin-bottom: 2px;
+    }
+
+    #default_lang:hover {
+        cursor: pointer;
+        /* background-color: white; */
+    }
+
+    #ko {
+        width: 35px;
+        height: 35px;
+        border: 2px black solid;
+    }
+
+    #ko:hover {
+        cursor: pointer;
+        /* background-color: white; */
+    }
+
+    #jp {
+        width: 35px;
+        height: 35px;
+        border: 2px black solid;
+    }
+
+    #jp:hover {
+        cursor: pointer;
+        /* background-color: white; */
+    }
+
+    #en {
+        width: 35px;
+        height: 35px;
+        border: 2px black solid;
+    }
+
+    #en:hover {
+        cursor: pointer;
+        /* background-color: white; */
+    }
+</style>
 <header>
     <!-- 네비게이션(nav) 컨트롤에 사용하는 드롭다운. -->
     <div class="navbar header-navbar">
@@ -14,97 +117,111 @@ copyright : 이규호, 최양원
                 <!-- 네비게이션(nav)의 기본 설정으로 모바일일 때, 메뉴 버튼이 나온다. -->
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">
-                        <img src="/images/code_icon.png" alt="penguin coder의 페이지" title="penguin coder의 페이지"
-                            onclick="fnMainIcon()">
+                        <img id="page_icon" src="/images/code_icon.png" alt="penguin coder의 페이지"
+                            title="penguin coder의 페이지" onclick="fnMainIcon()">
                     </a>
                 </div>
                 <!-- 메뉴 설정 -->
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                onclick="fnGameInfo()" aria-expanded="false">
+                            <a id="game_info_top_menu" href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                role="button" onclick="fnGameInfo()" aria-expanded="false">
                                 게임정보
                             </a>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                onclick="fnChampion()" aria-expanded="false">
+                            <a id="champions_top_menu" href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                role="button" onclick="fnChampion()" aria-expanded="false">
                                 챔피언
                             </a>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                aria-expanded="false">
+                            <a id="new_news_top_menu" href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                role="button" aria-expanded="false">
                                 새소식<span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li class="sub-menu">
-                                    <a href="#" onclick="fnNewNews_1()">
+                                    <a id="news1_top_menu" href="#" onclick="fnNewNews_1()">
                                         소식1
                                     </a>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="#" onclick="fnNewNews_2()">
+                                    <a id="news2_top_menu" href="#" onclick="fnNewNews_2()">
                                         소식2
                                     </a>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                onclick="fnPatchNote()" aria-expanded="false">
+                            <a id="patchnote_top_menu" href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                role="button" onclick="fnPatchNote()" aria-expanded="false">
                                 패치노트
                             </a>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                onclick="fnDownload()" aria-expanded="false">
+                            <a id="download_top_menu" href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                role="button" onclick="fnDownload()" aria-expanded="false">
                                 다운로드
                             </a>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                onclick="fnEsports()" aria-expanded="false">
+                            <a id="esports_top_menu" href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                role="button" onclick="fnEsports()" aria-expanded="false">
                                 E스포츠
                             </a>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                aria-expanded="false">
+                            <a id="forInfo_top_menu" href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                role="button" aria-expanded="false">
                                 알아보기<span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li class="sub-menu">
-                                    <a href="#" onclick="fnForInto_1()">
+                                    <a id="forInfo_1_top_menu" href="#" onclick="fnForInto_1()">
                                         알아보기1
                                     </a>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="#" onclick="fnForInto_2()">
+                                    <a id="forInfo_2_top_menu" href="#" onclick="fnForInto_2()">
                                         알아보기2
                                     </a>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                onclick="fnUnivers()" aria-expanded="false">
+                            <a id="univers_top_menu" href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                role="button" onclick="fnUnivers()" aria-expanded="false">
                                 유니버스
                             </a>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                onclick="fnRiotStore()" aria-expanded="false">
+                            <a id="riotStore_top_menu" href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                role="button" onclick="fnRiotStore()" aria-expanded="false">
                                 라이엇 스토어
                             </a>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                onclick="fnHelpDesk()" aria-expanded="false">
+                            <a id="helpDesk_top_menu" href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                role="button" onclick="fnHelpDesk()" aria-expanded="false">
                                 고객지원
                             </a>
                         </li>
                     </ul>
                     <div class="nav navbar-nav navbar-right">
+                        <div id="lang_select">
+                            <img id="default_lang" src="/images/language/lang_dafault.png"></img>
+                            <ul id="lang_dropdown">
+                                <li>
+                                    <img id="ko" src="/images/language/lang_ko.png"></img>
+                                </li>
+                                <li>
+                                    <img id="jp" src="/images/language/lang_jp.png"></img>
+                                </li>
+                                <li>
+                                    <img id="en" src="/images/language/lang_en.png"></img>
+                                </li>
+                            </ul>
+                        </div>
                         <p id="setTimeInit" style="position:absolute;right: 355px;"></p>
                         <button class="btn btn-primary" id="resetTimer" type="submit"><span
                                 class="glyphicon glyphicon-refresh"></span> 시간 초기화</button>
@@ -224,6 +341,84 @@ copyright : 이규호, 최양원
     </div>
 </header>
 <script>
+    let langToggle = true;
+    $(function () {
+        $("#lang_select").click(() => {
+            if (langToggle) {
+                $("#lang_dropdown").slideDown(500);
+            } else {
+                $("#lang_dropdown").slideUp(500);
+            }
+            langToggle = !langToggle;
+        });
+    });
+
+    // 언어변경
+    $(document).ready(function () {
+        $("#ko").click(function () {
+            fnLangKo();
+        });
+
+        $("#jp").click(function () {
+            fnLangJp();
+        });
+
+        $("#en").click(function () {
+            fnLangKo();
+        });
+    });
+
+    function fnLangKo() {
+        /**
+         * header.html
+         */
+        document.getElementById('page_icon').setAttribute('alt', 'penguin coder의 페이지');
+        document.getElementById('page_icon').setAttribute('title', 'penguin coder의 페이지');
+        document.getElementById('game_info_top_menu').innerText = '게임정보';
+        document.getElementById('champions_top_menu').innerText = '챔피언';
+        document.getElementById('new_news_top_menu').innerHTML = '새소식<span class="caret"></span>';
+        document.getElementById('news1_top_menu').innerText = '소식1';
+        document.getElementById('news2_top_menu').innerText = '소식2';
+        document.getElementById('patchnote_top_menu').innerText = '패치노트';
+        document.getElementById('download_top_menu').innerText = '다운로드';
+        document.getElementById('esports_top_menu').innerText = 'E스포츠';
+        document.getElementById('forInfo_top_menu').innerHTML = '알아보기<span class="caret"></span>';
+        document.getElementById('forInfo_1_top_menu').innerText = '알아보기1';
+        document.getElementById('forInfo_2_top_menu').innerText = '알아보기2';
+        document.getElementById('univers_top_menu').innerText = '유니버스';
+        document.getElementById('riotStore_top_menu').innerText = '라이엇 스토어';
+        document.getElementById('helpDesk_top_menu').innerText = '고객지원';
+        document.getElementById('resetTimer').innerHTML = '<span class="glyphicon glyphicon-refresh" ></span > 시간 초기화';
+        document.getElementById('user_info').innerHTML = '<span class="glyphicon glyphicon-user"></span> 회원정보';
+        document.getElementById('goback_intro_btn').innerHTML = '<span class="glyphicon glyphicon-remove"></span> 로그아웃';
+    }
+
+    function fnLangJp() {
+        /**
+         * header.html
+         */
+        document.getElementById('page_icon').setAttribute('alt', 'penguin coderのページ');
+        document.getElementById('page_icon').setAttribute('title', 'penguin coderのページ');
+        document.getElementById('game_info_top_menu').innerText = 'ゲーム情報';
+        document.getElementById('champions_top_menu').innerText = 'チャンピオン';
+        document.getElementById('new_news_top_menu').innerHTML = '新情報<span class="caret"></span>';
+        document.getElementById('news1_top_menu').innerText = 'お知らせ1';
+        document.getElementById('news2_top_menu').innerText = 'お知らせ2';
+        document.getElementById('patchnote_top_menu').innerText = 'パッチノート';
+        document.getElementById('download_top_menu').innerText = 'ダウンロード';
+        document.getElementById('esports_top_menu').innerText = 'Eスポーツ';
+        document.getElementById('forInfo_top_menu').innerHTML = '調べる<span class="caret"></span>';
+        document.getElementById('forInfo_1_top_menu').innerText = '調べる1';
+        document.getElementById('forInfo_2_top_menu').innerText = '調べる2';
+        document.getElementById('univers_top_menu').innerText = 'ユニバース';
+        document.getElementById('riotStore_top_menu').innerText = 'ライオットストアー';
+        document.getElementById('helpDesk_top_menu').innerText = '顧客サポート';
+        document.getElementById('resetTimer').innerHTML = '<span class="glyphicon glyphicon-refresh" ></span > 時間リセット';
+        document.getElementById('user_info').innerHTML = '<span class="glyphicon glyphicon-user"></span> 会員情報';
+        document.getElementById('goback_intro_btn').innerHTML = '<span class="glyphicon glyphicon-remove"></span> ログアウト';
+    }
+    // -------------------------언어변경--------------------------------------------------------------------------------
+
     function fnGoBackIntro() {
         sessionStorage.clear();
         location.href = '/html/intro.html';
