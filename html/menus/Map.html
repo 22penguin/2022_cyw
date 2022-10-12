@@ -1,7 +1,7 @@
 <!-- 
 게임 정보
 pre - 2022.09.09
-modify - 2022.09.24
+modify - 2022.10.12
 milestone - 2022.12.30
 dev : 이규호, 최양원
 copyright : 이규호, 최양원
@@ -20,7 +20,9 @@ copyright : 이규호, 최양원
         integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.9.2/jquery.contextMenu.min.css">
+    <link rel="stylesheet" href="https://openlayers.org/en/v3.20.1/css/ol.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/Map.css" />
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
@@ -38,12 +40,14 @@ copyright : 이규호, 최양원
         src="https://cdn.rawgit.com/ax5ui/ax5ui-formatter/master/dist/ax5formatter.min.js"></script>
     <script type="text/javascript"
         src="https://cdn.rawgit.com/ax5ui/ax5ui-picker/master/dist/ax5picker.min.js"></script>
+    <script src="https://openlayers.org/en/v3.20.1/build/ol.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.9.2/jquery.contextMenu.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.9.2/jquery.ui.position.js"></script>
     <!-- <script type="text/javascript" src="/js/common.js"></script> -->
 
     <script src="/js/default.js"></script>
+    <script src="/js/openlayer/Map.js"></script>
 
     <title>qenguin coder의 페이지</title>
 </head>
@@ -54,10 +58,7 @@ copyright : 이규호, 최양원
         <div class="row contents">
             <div class="col-sm-10">
                 <div class="row" style="padding: 6px;"></div>
-                <h1>게임정보</h1>
-                <p>
-                    <strong>game_info</strong>
-                </p>
+                <div id="map" class="map"></div>
             </div>
         </div>
     </div>
