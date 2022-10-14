@@ -10,4 +10,128 @@
     width: 100%;
     height: 800px;
     border: 2px solid black;
+    position: absolute;
+}
+
+.ol-zoom {
+    position: absolute;
+    top: -moz-calc(240px);
+    top: -webkit-calc(240px);
+    top: calc(240px);
+    left: -moz-calc(100% - 40px);
+    left: -webkit-calc(100% - 40px);
+    left: calc(100% - 40px);
+}
+
+.ol-zoomslider {
+    position: absolute;
+    top: -moz-calc(290px);
+    top: -webkit-calc(290px);
+    top: calc(290px);
+    left: -moz-calc(100% - 40px);
+    left: -webkit-calc(100% - 40px);
+    left: calc(100% - 40px);
+}
+
+.ol-zoomslider:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.ol-zoomslider-handle:hover {
+    background-color: rgba(255, 69, 0, 0.7);
+}
+
+.ol-zoomslider-thumb {
+    height: 15px;
+    width: 15px;
+    margin: 0;
+    filter: none;
+    background-color: rgba(255, 69, 0, 0.6);
+    border-radius: 20px;
+}
+
+
+.custom-control {
+    display: inline-block;
+    position: absolute;
+    top: -moz-calc(10px);
+    top: -webkit-calc(10px);
+    top: calc(130px);
+    left: -moz-calc(100% - 42px);
+    left: -webkit-calc(100% - 42px);
+    left: calc(100% - 42px);
+    z-index: 100;
+    text-align: right;
+}
+
+.custom-map-control {
+    display: inline-block;
+    /**	position: absolute;	
+	top: -moz-calc(40px); 
+	top: -webkit-calc(40px); 
+	top: calc(40px); */
+    left: -moz-calc(100%);
+    left: -webkit-calc(100%);
+    left: calc(100%);
+    z-index: 100;
+    width: 32px;
+    text-align: center;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, .4);
+    border-color: rgba(255, 255, 255, .4);
+    margin-top: 70px;
+    margin-right: 10px;
+}
+
+.custom-map-control img {
+    display: inline-block;
+    background-color: white;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin-top: 4px;
+}
+
+.custom-map-control img:last-of-type {
+    margin-bottom: 4px;
+}
+
+.ol-tooltip {
+    position: relative;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    color: white;
+    padding: 4px 8px;
+    opacity: 0.7;
+    white-space: nowrap;
+    font-size: 12px;
+    cursor: default;
+    user-select: none;
+}
+
+.ol-tooltip-measure {
+    opacity: 1;
+    font-weight: bold;
+}
+
+.ol-tooltip-static {
+    background-color: #ffcc33;
+    color: black;
+    border: 1px solid white;
+}
+
+.ol-tooltip-measure:before,
+.ol-tooltip-static:before {
+    border-top: 6px solid rgba(0, 0, 0, 0.5);
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    margin-left: -7px;
+    left: 50%;
+}
+
+.ol-tooltip-static:before {
+    border-top-color: #ffcc33;
 }
