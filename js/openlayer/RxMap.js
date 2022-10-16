@@ -1,7 +1,7 @@
 /**
  * RxMap
  * pre - 2022.09.09
- * modify - 2022.10.14
+ * modify - 2022.10.16
  * milestone - 2022.12.30
  * dev : 최양원
  * copyright : 최양원
@@ -34,10 +34,6 @@ RxMap.prototype.constructor = RxMap;
 RxMap.prototype.MapProjection = Proj_4326;
 RxMap.prototype.LayerProjection = Proj_900913;
 RxMap.prototype.drawcustom = new DrawCustom();
-
-// RxMap.prototype.Contextmenu = new ContextMenu({
-//     width: 180
-// });
 
 RxMap.prototype.initialize = function (mapDiv) {
     this.div = mapDiv;
@@ -310,14 +306,6 @@ RxMap.prototype.getLayers = function () {
     }
 };
 
-// RxMap.prototype.layerClear = function() {
-// 	let staLayer = rxMap.station.LayerSource;
-// 	let rouLayer = rxMap.route.LayerSource;
-
-// 	staLayer.clear(true);
-// 	rouLayer.clear(true);
-// };
-
 RxMap.prototype.draw_reset = function () {
     this.map.removeInteraction(this.drawcustom.draw);
     this.drawcustom.layer_reset();
@@ -325,11 +313,13 @@ RxMap.prototype.draw_reset = function () {
 
 RxMap.prototype.draw_line = function () {
     this.map.removeInteraction(this.drawcustom.draw);
+    $(".ol-tooltip").remove();
     this.drawcustom.draw_linestring();
 }
 
 RxMap.prototype.draw_polygon = function () {
     this.map.removeInteraction(this.drawcustom.draw);
+    $(".ol-tooltip").remove();
     this.drawcustom.draw_polygon();
 }
 // map functions end----------------------------------------------------------------------------------------------------------------
@@ -338,7 +328,6 @@ var rxMap = null;
 
 function InitializeMap(mapDiv) {
     rxMap = new RxMap(mapDiv);
-
     rxMap.addLayer(rxMap.drawcustom.Layer);
 };
 

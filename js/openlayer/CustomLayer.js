@@ -1,12 +1,11 @@
 /**
  * CustomLayer
  * pre - 2022.09.09
- * modify - 2022.10.14
+ * modify - 2022.10.16
  * milestone - 2022.12.30
  * dev : 최양원
  * copyright : 최양원
  */
-
 'use strict';
 
 const LAYER_NAME_DRAW = "drawLayer";
@@ -19,7 +18,6 @@ DrawCustom.prototype = new CustomLayer();
 DrawCustom.prototype.constructor = DrawCustom;
 
 DrawCustom.prototype.draw = null;
-DrawCustom.prototype.sketch = null;
 
 DrawCustom.prototype.initialize = function () {
     this.Layer = new ol.layer.Vector({
@@ -27,21 +25,6 @@ DrawCustom.prototype.initialize = function () {
         source: new ol.source.Vector()
     });
 };
-
-DrawCustom.prototype.create_tooltip = function () {
-    if (this.TooltipElement) {
-        this.TooltipElement.parentNode.removeChild(this.TooltipElement);
-    }
-
-    this.TooltipElement = document.createElement('div');
-    this.TooltipElement.className = 'ol-tooltip ol-tooltip-measure';
-    this.Tooltip = new ol.Overlay({
-        element: this.TooltipElement,
-        offset: [0, -15],
-        positioning: 'bottom-center',
-    });
-    this.map.addOverlay(this.Tooltip);
-}
 
 DrawCustom.prototype.draw_linestring = function () {
     this.Layer.getSource().clear();
@@ -67,28 +50,30 @@ DrawCustom.prototype.draw_linestring = function () {
     this.create_tooltip();
 
     var listener;
+    var sketch;
     this.draw.on('drawstart', function (evt) {
-        this.sketch = evt.feature;
+        sketch = evt.feature;
         var tooltipCoord = evt.coordinate;
 
-        listener = this.sketch.getGeometry().on('change', function (evt) {
+        listener = sketch.getGeometry().on('change', function (evt) {
             var geom = evt.target;
             var output = formatLength(geom);
             tooltipCoord = geom.getLastCoordinate();
             console.log(output);
+            console.log(tooltipCoord);
 
-            this.TooltipElement.innerHTML = output;
-            this.Tooltip.setPosition(tooltipCoord);
+            rxMap.drawcustom.TooltipElement.innerHTML = output;
+            rxMap.drawcustom.Tooltip.setPosition(tooltipCoord);
         });
     });
 
     this.draw.on('drawend', function () {
-        this.TooltipElement.className = 'ol-tooltip ol-tooltip-static';
-        this.Tooltip.setOffset([0, -7]);
+        rxMap.drawcustom.TooltipElement.className = 'ol-tooltip ol-tooltip-static';
+        rxMap.drawcustom.Tooltip.setOffset([0, -7]);
 
-        this.sketch = null;
-        this.TooltipElement = null;
-        this.create_tooltip;
+        sketch = null;
+        rxMap.drawcustom.TooltipElement = null;
+        rxMap.drawcustom.create_tooltip();
         new ol.Observable(listener);
     });
 };
@@ -117,31 +102,45 @@ DrawCustom.prototype.draw_polygon = function () {
     this.create_tooltip();
 
     var listener;
+    var sketch;
     this.draw.on('drawstart', function (evt) {
-        this.sketch = evt.feature;
+        sketch = evt.feature;
         var tooltipCoord = evt.coordinate;
 
-        listener = this.sketch.getGeometry().on('change', function (evt) {
+        listener = sketch.getGeometry().on('change', function (evt) {
             var geom = evt.target;
             var output = formatArea(geom);
             tooltipCoord = geom.getInteriorPoint().getCoordinates();
             console.log(output);
+            console.log(tooltipCoord);
 
-            //			this.TooltipElement.innerHTML = output;
-            //			this.Tooltip.setPosition(tooltipCoord);
+            rxMap.drawcustom.TooltipElement.innerHTML = output;
+            rxMap.drawcustom.Tooltip.setPosition(tooltipCoord);
         });
     });
 
     this.draw.on('drawend', function () {
-        //		this.TooltipElement.className = 'ol-tooltip ol-tooltip-static';
-        //		this.Tooltip.setOffset([0, -7]);
+        rxMap.drawcustom.TooltipElement.className = 'ol-tooltip ol-tooltip-static';
+        rxMap.drawcustom.Tooltip.setOffset([0, -7]);
 
-        this.sketch = null;
-        this.TooltipElement = null;
-        this.create_tooltip;
+        sketch = null;
+        rxMap.drawcustom.TooltipElement = null;
+        rxMap.drawcustom.create_tooltip();
         new ol.Observable(listener);
     });
 };
+
+DrawCustom.prototype.create_tooltip = function () {
+    this.TooltipElement = document.createElement('div');
+    this.TooltipElement.className = 'ol-tooltip ol-tooltip-measure';
+    this.Tooltip = new ol.Overlay({
+        element: this.TooltipElement,
+        offset: [0, -15],
+        positioning: 'bottom-center',
+    });
+
+    this.map.addOverlay(this.Tooltip);
+}
 
 function formatLength(line) {
     var length = new ol.sphere.getLength(line);
@@ -168,5 +167,6 @@ function formatArea(polygon) {
 }
 
 DrawCustom.prototype.layer_reset = function () {
+    $(".ol-tooltip").remove();
     this.Layer.getSource().clear();
 };
