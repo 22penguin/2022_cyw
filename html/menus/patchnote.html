@@ -21,6 +21,7 @@ copyright : 최양원
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.9.2/jquery.contextMenu.min.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/scss/patchnote.scss" />
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
@@ -44,6 +45,7 @@ copyright : 최양원
     <!-- <script type="text/javascript" src="/js/common.js"></script> -->
 
     <script src="/js/default.js"></script>
+    <script src="/js/patchnote.js"></script>
 
     <title>qenguin coder의 페이지</title>
 </head>
@@ -53,11 +55,23 @@ copyright : 최양원
         <div class="header" id="header"></div>
         <div class="row contents">
             <div class="col-sm-10">
-                <div class="row" style="padding: 6px;"></div>
-                <h1>패치노트</h1>
-                <p>
-                    <strong>patchnote</strong>
-                </p>
+                <div id="world" />
+                <div id="gameoverInstructions">
+                    Game Over
+                </div>
+                <div id="dist">
+                    <div class="label">distance</div>
+                    <div id="distValue">000</div>
+                </div>
+
+                <div id="instructions">Click to jump<span class="lightInstructions"> — Grab the carrots / avoid the
+                        hedgehogs</span></div>
+
+
+                <div id="credits">
+                    <p><a href="https://codepen.io/Yakudoo/" target="blank">other codepens</a> | <a
+                            href="https://www.epic.net" target="blank">epic.net</a></p>
+                </div>
             </div>
         </div>
     </div>
